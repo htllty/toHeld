@@ -1,0 +1,54 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor and IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary Files
+*.tmp
+*.temp
+*.log
+
+# Build and Distribution
+dist/
+build/
+*.o
+*.so
+*.exe
+
+# Dependencies
+node_modules/
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+
+# Configuration Files (that might contain secrets)
+.env
+.env.local
+.env.production
+config.local.*
+
+# Cache Directories
+.cache/
+.npm/
+.yarn/
+
+# Coverage Reports
+coverage/
+*.lcov
+htmlcov/
+
+# Backup Files
+*.bak
+*.backup

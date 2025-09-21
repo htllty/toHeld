@@ -1,0 +1,88 @@
+name: Documentation Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  check-docs:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Check for required files
+      run: |
+        echo "Checking for essential repository files..."
+        
+        # Check for required files
+        if [ ! -f "README.md" ]; then
+          echo "❌ README.md is missing"
+          exit 1
+        else
+          echo "✅ README.md found"
+        fi
+        
+        if [ ! -f "LICENSE" ]; then
+          echo "❌ LICENSE is missing"
+          exit 1
+        else
+          echo "✅ LICENSE found"
+        fi
+        
+        if [ ! -f "CONTRIBUTING.md" ]; then
+          echo "❌ CONTRIBUTING.md is missing"
+          exit 1
+        else
+          echo "✅ CONTRIBUTING.md found"
+        fi
+        
+        if [ ! -f ".gitignore" ]; then
+          echo "❌ .gitignore is missing"
+          exit 1
+        else
+          echo "✅ .gitignore found"
+        fi
+        
+        echo "✅ All essential files are present!"
+    
+    - name: Check README content
+      run: |
+        echo "Checking README.md content..."
+        
+        # Check if README has meaningful content
+        if [ $(wc -l < README.md) -lt 10 ]; then
+          echo "❌ README.md seems too short (less than 10 lines)"
+          exit 1
+        fi
+        
+        # Check for basic sections
+        if ! grep -q "## " README.md; then
+          echo "❌ README.md should have section headers"
+          exit 1
+        fi
+        
+        echo "✅ README.md has good structure!"
+    
+    - name: Check for documentation directory
+      run: |
+        if [ ! -d "docs" ]; then
+          echo "❌ docs/ directory is missing"
+          exit 1
+        else
+          echo "✅ docs/ directory found"
+        fi
+        
+        if [ ! -f "docs/README.md" ]; then
+          echo "❌ docs/README.md is missing"
+          exit 1
+        else
+          echo "✅ docs/README.md found"
+        fi
+    
+    - name: Success message
+      run: |
+        echo "🎉 Repository structure looks good!"
+        echo "This is a well-organized repository with proper documentation."
