@@ -2570,7 +2570,7 @@ if (IS_HEADER) {
 	init();
 } else {
 	// Allow status to render, then preload assets and start app.
-	setLoadingStatus("emm, 请问我国庆节能和你一起回家吗？");
+	setLoadingStatus("emm, 请问国庆节我可以去找你玩吗？");
 
 	setTimeout(() => {
 		// 只加载 soundManager
